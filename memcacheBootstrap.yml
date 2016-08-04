@@ -12,10 +12,8 @@
 
      - name: Download Memcache
        yum:
-         name: "{{ item }}"
-         state: present
-       with_items:
-         - memcached
+         name: memcached
+         state: latest
 
 #     - name: Start memcached service
 #       service: 
