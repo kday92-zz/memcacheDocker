@@ -16,3 +16,8 @@
          state: present
        with_items:
          - memcached
+
+     - name: Start memcached service
+       service: 
+         name: memcached
+         state: started
