@@ -1,0 +1,18 @@
+- name: Dockerfile
+  hosts: localhost
+  connection: local
+  tasks:
+
+     - name: Install repositories packages
+       yum:
+         name: "{{ item }}"
+         state: present
+       with_items:
+         - https://centos7.iuscommunity.org/ius-release.rpm
+
+     - name: Download Memcache
+       yum:
+         name: "{{ item }}"
+         state: present
+       with_items:
+         - memcached
