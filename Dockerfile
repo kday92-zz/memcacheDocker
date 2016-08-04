@@ -5,7 +5,7 @@ RUN yum install -y git https://dl.fedoraproject.org/pub/epel/epel-release-latest
 
 RUN yum install -y ansible && yum clean all -y
 
-RUN git clone https://github.com/kday92/dockerAnsible.git
+RUN git clone https://github.com/kday92/memcacheDocker.git
 RUN ansible-playbook memcacheDocker/memcacheBootstrap.yml
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
@@ -19,5 +19,5 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
 EXPOSE 11211
-CMD ["/usr/bin/memcached"]
+CMD ["/bin/bash"]
 
