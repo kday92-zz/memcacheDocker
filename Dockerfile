@@ -18,6 +18,11 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ "/sys/fs/cgroup" ]
-EXPOSE 11211
-CMD ["/bin/bash"]
+
+COPY entrypoint.sh /sbin/entrypoint.sh
+RUN chmod 755 /sbin/entrypoint.sh
+
+EXPOSE 11211/tcp 11211/udp
+ENTRYPOINT ["/sbin/entrypoint.sh"]
+CMD ["/usr/bin/memcached"]
 
